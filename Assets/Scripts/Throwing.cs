@@ -58,6 +58,9 @@ public class Throwing : MonoBehaviour
 
             if (heldObjectRb != null)
             {
+                throwableBoxScr tBS = heldObject.GetComponent<throwableBoxScr>();
+
+                if (tBS != null && tBS.isInAir) { FindAnyObjectByType<scoreManagerScript>().PerformCatch(); }
 
                 // Disable the object's gravity and make it kinematic while held
                 heldObjectRb.useGravity = false;
@@ -90,6 +93,10 @@ public class Throwing : MonoBehaviour
             // Apply a force to throw the object
             Vector3 throwDirection = transform.forward; // Adjust the throw direction as needed
             heldObjectRb.AddForce(throwDirection * throwForce, ForceMode.Impulse);
+            throwableBoxScr tBS = heldObject.GetComponent<throwableBoxScr>();
+             
+            if (tBS != null) { tBS.isInAir = true; }
+
 
             heldObject.layer = LayerMask.NameToLayer("Throwable");
 
@@ -100,10 +107,5 @@ public class Throwing : MonoBehaviour
             //temp
             animationHelper.DropObject();         
         }
-    }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(raycastStartObj.position, raycastStartObj.position - raycastStartObj.up * 4f - raycastStartObj.right * 2f);
     }
 }

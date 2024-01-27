@@ -49,4 +49,15 @@ public class scoreManagerScript : MonoBehaviour
             }
         }
     }
+
+    public void PerformCatch()
+    {
+        for (int i = 0; i < targets.Length; i++)
+        {
+            if (targets[i].likesCatch && !targets[i].isLost)
+            {
+                targets[i].val += improvementValue;
+            }
+        }
+    }
 }
