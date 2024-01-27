@@ -71,7 +71,7 @@ public class ciastoScr : MonoBehaviour
             {
                 case 0: holdsCiasto = true; animationHelper.OneHand(); break;
                 case 1: holdsBanana = true; animationHelper.OneHand(); break;
-                case 2: holdsGun=true; break;
+                case 2: holdsGun=true; animationHelper.GunEnable(); break;
                 case 3: holdsHammer=true; hammerHits = hammerHitsMax; animationHelper.OneHand(); break;
             }
         }
@@ -123,8 +123,8 @@ public class ciastoScr : MonoBehaviour
         }
         else if(holdsGun)
         {
-            // todo
             UsePower();
+            animationHelper.GunDisable();
         }
     }
     public void UsePower()
