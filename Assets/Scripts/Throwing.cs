@@ -14,6 +14,10 @@ public class Throwing : MonoBehaviour
 
     private GameObject heldObject;
     private Rigidbody heldObjectRb;
+    public AnimationHelper animationHelper;
+    void Start(){
+        animationHelper=GetComponent<AnimationHelper>();
+    }
 
     void Update()
     {
@@ -65,6 +69,9 @@ public class Throwing : MonoBehaviour
                 heldObject.transform.position = holdingPosObj.position;
                 heldObject.transform.rotation = holdingPosObj.rotation;
                 heldObject.layer = LayerMask.NameToLayer("Holding");
+
+                // Animator
+                animationHelper.GrabObject();
             }
         }
     }
@@ -88,7 +95,10 @@ public class Throwing : MonoBehaviour
 
             // Reset the held object variables
             heldObject = null;
-            heldObjectRb = null;            
+            heldObjectRb = null;   
+
+            //temp
+            animationHelper.DropObject();         
         }
     }
     private void OnDrawGizmos()
