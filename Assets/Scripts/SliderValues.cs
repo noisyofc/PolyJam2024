@@ -11,17 +11,21 @@ public class SliderValues : MonoBehaviour
 
     public Slider valueSlider;
     public Image sliderImage;
-
+    float val;
+    float mult = 1f;
     void Start()
     {
         valueSlider = GetComponent<Slider>();
         valueSlider.value = maxValue; // Start with the slider at its maximum value
+        val = minValue;
     }
 
     void Update()
     {
-        // Simulate a slow fall of the slider value
-        valueSlider.value = Mathf.Lerp(valueSlider.value, minValue, fallSpeed * Time.deltaTime);
+        val += fallSpeed * Time.deltaTime*mult;
+        if(val>maxValue || val<minValue) { mult *= -1; }
+        valueSlider.value = Mathf.Lerp(maxValue, minValue, val);
+
         sliderImage.color = Color.Lerp(Color.red, Color.green, valueSlider.value);
     }
 }
