@@ -13,6 +13,7 @@ public class pauseManagerScr : MonoBehaviour
     public InputAction pause;
 
     public GameObject pauseMenu;
+    public GameObject mainUI;
 
     private void OnEnable()
     {
@@ -32,6 +33,7 @@ public class pauseManagerScr : MonoBehaviour
     {
         isPaused = false;
         pauseMenu.SetActive(false);
+        mainUI.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -44,6 +46,7 @@ public class pauseManagerScr : MonoBehaviour
     {
         isPaused=true;
         pauseMenu.SetActive(true);
+        mainUI.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
     }
     private void Update()
