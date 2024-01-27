@@ -8890,11 +8890,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 5
-  jumpButton: Jump_P1
   groundLayerToIgnore:
     serializedVersion: 2
     m_Bits: 0
-  raycastDistance: 0.1
+  raycastDistance: 0.3
   animator: {fileID: 0}
   jumpInput:
     m_Name: Jump Input
@@ -8921,6 +8920,7 @@ MonoBehaviour:
       m_Action: Jump Input
       m_Flags: 0
     m_Flags: 0
+  JumpCooldownInSeconds: 1
 --- !u!95 &7391046288565217426
 Animator:
   serializedVersion: 5
