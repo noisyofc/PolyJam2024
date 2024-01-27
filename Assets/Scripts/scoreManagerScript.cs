@@ -6,13 +6,22 @@ public class scoreManagerScript : MonoBehaviour
 {
     public targetScr[] targets;
     public float improvementValue;
+    public float multiplier = 1;
+    public float timer;
+
+    private void Update()
+    {
+        timer -= Time.deltaTime;
+        if (timer < 0) { timer = 0; multiplier = 1; }
+    }
     public void PerformPie()
     {
         for (int i = 0; i < targets.Length; i++)
         {
             if (targets[i].likesPie && !targets[i].isLost)
             {
-                targets[i].val += improvementValue;
+                targets[i].val += improvementValue*multiplier;
+                multiplier = 1;
             }
         }
     }
@@ -23,7 +32,8 @@ public class scoreManagerScript : MonoBehaviour
         {
             if (targets[i].likesBanana && !targets[i].isLost)
             {
-                targets[i].val += improvementValue;
+                targets[i].val += improvementValue * multiplier;
+                multiplier = 1;
             }
         }
     }
@@ -34,7 +44,8 @@ public class scoreManagerScript : MonoBehaviour
         {
             if (targets[i].likesGun && !targets[i].isLost)
             {
-                targets[i].val += improvementValue;
+                targets[i].val += improvementValue * multiplier;
+                multiplier = 1;
             }
         }
     }
@@ -45,7 +56,8 @@ public class scoreManagerScript : MonoBehaviour
         {
             if (targets[i].likesHammer && !targets[i].isLost)
             {
-                targets[i].val += improvementValue;
+                targets[i].val += improvementValue * multiplier;
+                multiplier = 1;
             }
         }
     }
@@ -56,7 +68,8 @@ public class scoreManagerScript : MonoBehaviour
         {
             if (targets[i].likesCatch && !targets[i].isLost)
             {
-                targets[i].val += improvementValue;
+                targets[i].val += improvementValue * multiplier;
+                multiplier = 1;
             }
         }
     }
