@@ -43,7 +43,7 @@ public class Throwing : MonoBehaviour
         }
         else
         {
-            ThrowObject();
+            ThrowObjectInvoke();
         }
     }
 
@@ -79,7 +79,15 @@ public class Throwing : MonoBehaviour
         }
     }
 
-    void ThrowObject()
+    void ThrowObjectInvoke(){
+        animationHelper.animator.SetBool("ThrowObject",true);
+    }
+    public void ThrowObjectFromAnimation(){
+        ThrowObject();
+        animationHelper.ThrowObject();
+    }
+
+     void ThrowObject()
     {
         if (heldObject != null)
         {
@@ -105,7 +113,8 @@ public class Throwing : MonoBehaviour
             heldObjectRb = null;   
 
             //temp
-            animationHelper.DropObject();         
+            //animationHelper.DropObject();         
+            //animationHelper.animator.SetBool("ThrowObject",true);
         }
     }
 }

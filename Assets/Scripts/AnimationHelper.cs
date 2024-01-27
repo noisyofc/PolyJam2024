@@ -20,7 +20,8 @@ public class AnimationHelper : MonoBehaviour
     public void GrabObject(){
         animator.SetLayerWeight(objectMask,1f);
     }
-    public void DropObject(){
+    public void ThrowObject(){
         animator.SetLayerWeight(objectMask,0f);
+        animator.SetBool("ThrowObject",false);
     }
 }
