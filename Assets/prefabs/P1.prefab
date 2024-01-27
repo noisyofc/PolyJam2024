@@ -3915,12 +3915,21 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Throw Input
       m_Flags: 0
+    - m_Name: 
+      m_Id: b3b28d1a-7d8f-4ba5-8ced-982e24600bcd
+      m_Path: <Keyboard>/rightShift
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Throw Input
+      m_Flags: 0
     m_Flags: 0
   ciasto: {fileID: 5437065621496364901, guid: bd8936c4d4fda0448926ad04644d677e, type: 3}
   banana: {fileID: 2473374576216669582, guid: 6edca0d0a30c48247b683a69f1b2b6aa, type: 3}
   gunFirePt: {fileID: 6267063851738847407}
   hammerHitPt: {fileID: 4351967747188447767}
   hammerHitsMax: 3
+  scoreManager: {fileID: 0}
   PieGFX: {fileID: 6730961368071823433}
   BananaGFX: {fileID: 8942179703542793631}
   GunGFX: {fileID: 6305300534257271162}
@@ -3935,7 +3944,7 @@ MonoBehaviour:
   throwStrengthMax: 50
   throwStrengthDelta: 20
   slipStrength: 10
-  hitStrength: 0
+  hitStrength: 20
 --- !u!114 &-1681934334349627401
 MonoBehaviour:
   m_ObjectHideFlags: 0

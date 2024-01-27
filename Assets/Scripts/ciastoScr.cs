@@ -12,6 +12,7 @@ public class ciastoScr : MonoBehaviour
     public Transform gunFirePt;
     public Transform hammerHitPt;
     public float hammerHitsMax = 3f;
+    public scoreManagerScript scoreManager;
     [Header("GFX objects")]
     public GameObject PieGFX;
     public GameObject BananaGFX;
@@ -178,24 +179,28 @@ public class ciastoScr : MonoBehaviour
     public void HitByCiasto()
     {
         Debug.Log(transform.name + " was hit by ciasto");
+        scoreManager.PerformPie();
     }
     public void HitByBanana()
     {
         Debug.Log(transform.name + " was hit by banana");
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * slipStrength, ForceMode.Impulse);
+        scoreManager.PerformBanana();
     }
     public void HitByGun(Vector3 dir) 
     {
         Debug.Log(transform.name + " was hit by gun");
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.AddForce(dir * slipStrength, ForceMode.Impulse);
+        scoreManager.PerformGun();
     }
     public void HitByHammer(Vector3 dir)
     {
         Debug.Log(transform.name + " was hit by hammer");
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.AddForce(dir * slipStrength, ForceMode.Impulse);
+        scoreManager.PerformHammer();
     }
 
    
