@@ -3811,10 +3811,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3d3f8fe4413adea469af53ca7b331a99,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7537876735039188262}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3d3f8fe4413adea469af53ca7b331a99,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 7123089663974088287}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3d3f8fe4413adea469af53ca7b331a99,
         type: 3}
@@ -3828,6 +3824,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6847052221512754606}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3d3f8fe4413adea469af53ca7b331a99,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6240953285370185678}
   m_SourcePrefab: {fileID: 100100000, guid: 3d3f8fe4413adea469af53ca7b331a99, type: 3}
 --- !u!1 &3876572939944990816 stripped
 GameObject:
@@ -3898,6 +3898,7 @@ MonoBehaviour:
       m_Action: Movement Input
       m_Flags: 8
     m_Flags: 0
+  pMS: {fileID: 0}
 --- !u!54 &927186080053383385
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3961,27 +3962,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   animationHelper: {fileID: 0}
---- !u!65 &7537876735039188262
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3876572939944990816}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.63, y: 3.5, z: 1.45}
-  m_Center: {x: 0, y: 1.75, z: 0}
+  pMS: {fileID: 0}
 --- !u!114 &7123089663974088287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4040,6 +4021,7 @@ MonoBehaviour:
   throwStrengthDelta: 20
   slipStrength: 10
   hitStrength: 20
+  pMS: {fileID: 0}
 --- !u!114 &-1681934334349627401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4118,6 +4100,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
+--- !u!136 &6240953285370185678
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3876572939944990816}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.8
+  m_Height: 3.5152836
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.7435489, z: 0}
 --- !u!4 &4505721823826035418 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3d3f8fe4413adea469af53ca7b331a99,
