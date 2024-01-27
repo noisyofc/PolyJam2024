@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Jump : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Jump : MonoBehaviour
     private BoxCollider boxCollider;
     private bool isGrounded = true;
     public Animator animator;
+    public InputAction jumpInput;
 
     void Start()
     {
@@ -26,7 +28,7 @@ public class Jump : MonoBehaviour
     }
     void HandleInput()
     {
-        if (Input.GetButtonDown(jumpButton) && isGrounded)
+        if (jumpInput.WasPerformedThisFrame() && isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             animator.SetBool("JumpStart",true);
@@ -34,6 +36,15 @@ public class Jump : MonoBehaviour
         else {
             animator.SetBool("JumpStart",false);
         }
+    }
+
+    private void OnEnable()
+    {
+        jumpInput.Enable();
+    }
+    private void OnDisable()
+    {
+        jumpInput.Disable();
     }
     
 
