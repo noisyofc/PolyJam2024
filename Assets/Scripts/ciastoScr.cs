@@ -40,11 +40,17 @@ public class ciastoScr : MonoBehaviour
     float throwStrength;
     float hammerHits;
     public pauseManagerScr pMS;
+
+    private AnimationHelper animationHelper;
+    private bool throwInvoked=false;
+    private bool hammerInvoked=false;
+
     private void Start()
     {
         pMS = FindObjectOfType<pauseManagerScr>();
         throwStrength = 0;
         chargeSlider.value = 0;
+        animationHelper=GetComponent<AnimationHelper>();
     }
 
     private void OnEnable()
@@ -63,10 +69,10 @@ public class ciastoScr : MonoBehaviour
             canThrow = true;
             switch (objectIndex)
             {
-                case 0: holdsCiasto = true; break;
-                case 1: holdsBanana = true; break;
+                case 0: holdsCiasto = true; animationHelper.OneHand(); break;
+                case 1: holdsBanana = true; animationHelper.OneHand(); break;
                 case 2: holdsGun=true; break;
-                case 3: holdsHammer=true; hammerHits = hammerHitsMax; break;
+                case 3: holdsHammer=true; hammerHits = hammerHitsMax; animationHelper.OneHand(); break;
             }
         }
     }
@@ -82,7 +88,7 @@ public class ciastoScr : MonoBehaviour
         BananaGUI.SetActive(holdsBanana);
         GunGUI.SetActive(holdsGun);
         HammerGUI.SetActive(holdsHammer);
-        if(canThrow&& !pMS.isPaused)
+        if(canThrow && !throwInvoked && !hammerInvoked && !pMS.isPaused)
         {
             if (throwInput.ReadValue<float>()>0)
             {
@@ -96,7 +102,7 @@ public class ciastoScr : MonoBehaviour
             else if (throwInput.WasReleasedThisFrame())
             {
                 chargeSlider.value = 0;
-                UsePower();
+                InvokeUsePower();
             }
             else
             {
@@ -105,8 +111,25 @@ public class ciastoScr : MonoBehaviour
             }           
         }
     }
+    void InvokeUsePower(){
+        
+        throwInvoked=true;
+        if(holdsBanana||holdsCiasto){
+            animationHelper.animator.SetBool("ThrowBanana",true);
+        }
+        else if(holdsHammer && !hammerInvoked){
+            animationHelper.animator.SetBool("SwingHammer",true);
+            hammerInvoked=true;
+        }
+        else if(holdsGun)
+        {
+            // todo
+            UsePower();
+        }
+    }
     public void UsePower()
     {
+        throwInvoked=false;
         if (holdsCiasto)
         {
             GameObject GO = Instantiate(ciasto, throwPoint.position, throwPoint.rotation);
@@ -170,13 +193,24 @@ public class ciastoScr : MonoBehaviour
 
             hammerHits--;
 
-            if (hammerHits == 0)
+            // if (hammerHits == 0)
+            // {
+            //     canThrow = false;
+            //     holdsHammer = false;
+            //     //animationHelper.OneHandDrop();
+            // }
+        }
+    }
+    public void FinishHammerSwing(){
+        hammerInvoked=false;
+        animationHelper.FinishHammerSwingAnim();
+        if (hammerHits == 0)
             {
                 canThrow = false;
                 holdsHammer = false;
+                animationHelper.OneHandDrop();
             }
-        }
-    }
+     }
     public void HitByCiasto()
     {
         Debug.Log(transform.name + " was hit by ciasto");
