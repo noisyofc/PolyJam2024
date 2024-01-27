@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class ciastoScr : MonoBehaviour
 {
@@ -16,6 +17,12 @@ public class ciastoScr : MonoBehaviour
     public GameObject BananaGFX;
     public GameObject GunGFX;
     public GameObject HammerGFX;
+    [Header("GUI objects")]
+    public GameObject PieGUI;
+    public GameObject BananaGUI;
+    public GameObject GunGUI;
+    public GameObject HammerGUI;
+    public Slider chargeSlider;
     [Header("throwing logic")]
     public Transform throwPoint;
     public float throwStrengthMin;
@@ -34,7 +41,8 @@ public class ciastoScr : MonoBehaviour
 
     private void Start()
     {
-        throwStrength = throwStrengthMin;
+        throwStrength = 0;
+        chargeSlider.value = 1;
     }
 
     private void OnEnable()
@@ -67,19 +75,27 @@ public class ciastoScr : MonoBehaviour
         BananaGFX.SetActive(holdsBanana);
         GunGFX.SetActive(holdsGun);
         HammerGFX.SetActive(holdsHammer);
+
+        PieGUI.SetActive(holdsCiasto);
+        BananaGUI.SetActive(holdsBanana);
+        GunGUI.SetActive(holdsGun);
+        HammerGUI.SetActive(holdsHammer);
         if(canThrow)
         {
             if (throwInput.ReadValue<float>()>0)
             {
                 throwStrength += throwStrengthDelta * Time.deltaTime;
-                if (throwStrength > throwStrengthMax) { throwStrength = throwStrengthMax; }
+                chargeSlider.value = throwStrength/throwStrengthMax;
+                if (throwStrength > throwStrengthMax) { throwStrength = throwStrengthMax; }                
             }
             else if (throwInput.WasReleasedThisFrame())
             {
+                chargeSlider.value = 0;
                 UsePower();
             }
             else
             {
+                chargeSlider.value = 0;
                 throwStrength = throwStrengthMin;
             }           
         }
@@ -129,8 +145,9 @@ public class ciastoScr : MonoBehaviour
         else if (holdsHammer)
         {
             RaycastHit hit;
-            if (Physics.Raycast(hammerHitPt.position, -hammerHitPt.up, out hit, 3f))
+            if (Physics.Raycast(hammerHitPt.position, -hammerHitPt.up*2 - hammerHitPt.right, out hit, 5.5f))
             {
+                Debug.Log(hit.transform.name);
                 ciastoScr cS = hit.collider.GetComponent<ciastoScr>();
                 if (cS != null)
                 {
@@ -178,9 +195,9 @@ public class ciastoScr : MonoBehaviour
         rb.AddForce(dir * slipStrength, ForceMode.Impulse);
     }
 
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.red;
-    //    Gizmos.DrawLine(hammerHitPt.position, hammerHitPt.position - hammerHitPt.up * 3f);
-    //}
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(hammerHitPt.position, hammerHitPt.position - hammerHitPt.up * 4f-hammerHitPt.right*2f);
+    }
 }
