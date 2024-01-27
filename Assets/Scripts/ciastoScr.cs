@@ -222,6 +222,8 @@ public class ciastoScr : MonoBehaviour
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * slipStrength, ForceMode.Impulse);
         scoreManager.PerformBanana();
+        Movement movement=rb.GetComponent<Movement>();
+        movement.DisableMovement();
     }
     public void HitByGun(Vector3 dir) 
     {

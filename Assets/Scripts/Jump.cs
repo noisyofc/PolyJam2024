@@ -7,13 +7,14 @@ public class Jump : MonoBehaviour
 {
     public float jumpForce = 5f;
     private Rigidbody rb;
-    public string jumpButton = "Jump_PX";
     public LayerMask groundLayerToIgnore;
-    public float raycastDistance = 0.1f;
+    public float raycastDistance = 0.5f;
     private BoxCollider boxCollider;
     private bool isGrounded = true;
     public Animator animator;
     public InputAction jumpInput;
+    private float lastJump=Mathf.NegativeInfinity;
+    public float JumpCooldownInSeconds=1f;
 
     void Start()
     {
@@ -28,10 +29,11 @@ public class Jump : MonoBehaviour
     }
     void HandleInput()
     {
-        if (jumpInput.WasPerformedThisFrame() && isGrounded)
+        if (jumpInput.WasPerformedThisFrame() && isGrounded && Time.time+JumpCooldownInSeconds>=lastJump)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             animator.SetBool("JumpStart",true);
+            lastJump=Time.time;
         }
         else {
             animator.SetBool("JumpStart",false);
@@ -52,7 +54,7 @@ public class Jump : MonoBehaviour
     {
         RaycastHit hit;
         //isGrounded = Physics.Raycast(transform.position, Vector3.down, out hit, boxCollider.size.y/2+raycastDistance-boxCollider.center.y, ~groundLayerToIgnore);
-        isGrounded = Physics.Raycast(transform.position+Vector3.up*raycastDistance, Vector3.down, out hit, raycastDistance*2, ~groundLayerToIgnore);
+        isGrounded = Physics.Raycast(transform.position+Vector3.up*0.1f, Vector3.down, out hit, raycastDistance*2, ~groundLayerToIgnore);
 
         // Ignore the collider attached to this GameObject
         if (hit.collider != null && hit.collider.gameObject == gameObject)

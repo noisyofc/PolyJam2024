@@ -13,8 +13,11 @@ public class Movement : MonoBehaviour
     private Vector3 lastKnownPosition;
     private Animator animator;
     public pauseManagerScr pMS;
+    private bool canMove=true;
+    private AnimationHelper animationHelper;
     void Start()
     {
+        animationHelper=GetComponent<AnimationHelper>();
         pMS = FindObjectOfType<pauseManagerScr>();
         rb = GetComponent<Rigidbody>();
         animator=GetComponent<Animator>();
@@ -31,7 +34,7 @@ public class Movement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (!pMS.isPaused)
+        if (!pMS.isPaused && canMove)
         {
             HandleInput();
         }
@@ -65,5 +68,15 @@ public class Movement : MonoBehaviour
         }
         else animator.SetFloat("MoveSpeed",0f);
         lastKnownPosition=transform.position;
+    }
+
+    public void DisableMovement(){
+        canMove=false;
+        animationHelper.SweepEnable();
+
+    }
+    public void EnableMovement(){
+        canMove=true;
+        animationHelper.SweepDisable();
     }
 }

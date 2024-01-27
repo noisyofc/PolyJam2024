@@ -8,12 +8,14 @@ public class AnimationHelper : MonoBehaviour
     private int objectMask;
     private int oneHandMask;
     private int gunMask;
+    private int sweepMask;
     void Start()
     {
         animator=GetComponent<Animator>();
         objectMask=animator.GetLayerIndex("ObjectCarry");
         oneHandMask=animator.GetLayerIndex("OneHand");
         gunMask=animator.GetLayerIndex("Gun");
+        sweepMask=animator.GetLayerIndex("Sweep");
     }
 
     // Update is called once per frame
@@ -47,5 +49,13 @@ public class AnimationHelper : MonoBehaviour
     public void GunDisable(){
         animator.SetBool("FireGun",false);
         animator.SetLayerWeight(gunMask,0f);        
+    }
+    public void SweepEnable(){
+        animator.SetLayerWeight(sweepMask,1f);   
+        animator.SetBool("SweepFall",true);
+    }
+    public void SweepDisable(){
+        animator.SetLayerWeight(sweepMask,0f);   
+        animator.SetBool("SweepFall",false);
     }
 }
