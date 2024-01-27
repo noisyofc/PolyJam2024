@@ -18,6 +18,7 @@ public class ciastoScr : MonoBehaviour
     public GameObject BananaGFX;
     public GameObject GunGFX;
     public GameObject HammerGFX;
+    public GameObject AimGFX;
     [Header("GUI objects")]
     public GameObject PieGUI;
     public GameObject BananaGUI;
@@ -51,6 +52,7 @@ public class ciastoScr : MonoBehaviour
         throwStrength = 0;
         chargeSlider.value = 0;
         animationHelper=GetComponent<AnimationHelper>();
+        AimGFX.SetActive(false);
     }
 
     private void OnEnable()
@@ -93,6 +95,7 @@ public class ciastoScr : MonoBehaviour
             if (throwInput.ReadValue<float>()>0)
             {
                 throwStrength += throwStrengthDelta * Time.deltaTime;
+                AimGFX.SetActive((holdsCiasto || holdsBanana || holdsGun)&&throwStrength>7);
                 if (holdsBanana || holdsCiasto)
                 {
                     chargeSlider.value = throwStrength / throwStrengthMax;
@@ -101,11 +104,13 @@ public class ciastoScr : MonoBehaviour
             }
             else if (throwInput.WasReleasedThisFrame())
             {
+                AimGFX.SetActive(false);
                 chargeSlider.value = 0;
                 InvokeUsePower();
             }
             else
             {
+                AimGFX.SetActive(false);
                 chargeSlider.value = 0;
                 throwStrength = throwStrengthMin;
             }           
@@ -123,6 +128,7 @@ public class ciastoScr : MonoBehaviour
         }
         else if(holdsGun)
         {
+            Debug.Log("fire");
             UsePower();
             animationHelper.GunDisable();
         }
