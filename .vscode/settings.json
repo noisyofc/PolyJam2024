@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Camera.sln"
+    "dotnet.defaultSolution": "PolyJam2024.sln"
 }
