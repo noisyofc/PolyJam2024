@@ -1,33 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 
 public class Throwing : MonoBehaviour
 {
     public float throwForce = 10f; // Adjust the throw force as needed
-    public LayerMask throwableLayer; // Set the layer for objects that can be thrown
+    public LayerMask throwableLayer; 
+    public Transform holdingPosObj;
+    public Transform raycastStartObj;
+    public InputAction throwInput;
 
     private GameObject heldObject;
     private Rigidbody heldObjectRb;
-    private Vector3 originalPosition;
 
     void Update()
     {
         HandleInput();
     }
+    private void OnEnable()
+    {
+        throwInput.Enable();
+    }
+    private void OnDisable()
+    {
+        throwInput.Disable();
+    }
 
     void HandleInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (throwInput.ReadValue<float>()>0)
         {
             if (heldObject == null)
             {
                 PickUpObject();
-            }
-            else
-            {
-                ThrowObject();
-            }
+            }            
+        }
+        else
+        {
+            ThrowObject();
         }
     }
 
@@ -35,15 +47,13 @@ public class Throwing : MonoBehaviour
     {
         // Raycast to check if there's a throwable object in front of the player
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 1f, throwableLayer))
+        if (Physics.Raycast(raycastStartObj.position, -transform.up, out hit, 3f, throwableLayer))
         {
             heldObject = hit.collider.gameObject;
             heldObjectRb = heldObject.GetComponent<Rigidbody>();
 
             if (heldObjectRb != null)
             {
-                // Save the original position of the object
-                originalPosition = heldObject.transform.position;
 
                 // Disable the object's gravity and make it kinematic while held
                 heldObjectRb.useGravity = false;
@@ -51,6 +61,10 @@ public class Throwing : MonoBehaviour
 
                 // Attach the object to the player
                 heldObject.transform.parent = transform;
+
+                heldObject.transform.position = holdingPosObj.position;
+                heldObject.transform.rotation = holdingPosObj.rotation;
+                heldObject.layer = LayerMask.NameToLayer("Holding");
             }
         }
     }
@@ -70,9 +84,11 @@ public class Throwing : MonoBehaviour
             Vector3 throwDirection = transform.forward; // Adjust the throw direction as needed
             heldObjectRb.AddForce(throwDirection * throwForce, ForceMode.Impulse);
 
+            heldObject.layer = LayerMask.NameToLayer("Throwable");
+
             // Reset the held object variables
             heldObject = null;
-            heldObjectRb = null;
+            heldObjectRb = null;            
         }
     }
 }

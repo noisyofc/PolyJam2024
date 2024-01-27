@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float rotationSpeed = 720f;
-    public string horizontalAxis = "Horizontal";
-    public string verticalAxis = "Vertical";
+    public InputAction movementInput;
 
     private Rigidbody rb;
 
@@ -16,6 +16,14 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    private void OnEnable()
+    {
+        movementInput.Enable();
+    }
+    private void OnDisable()
+    {
+        movementInput.Disable();
+    }
     void Update()
     {
         HandleInput();
@@ -23,13 +31,9 @@ public class Movement : MonoBehaviour
 
     void HandleInput()
     {
-        // Get input from the player
-        float horizontalInput = Input.GetAxis(horizontalAxis);
-        float verticalInput = Input.GetAxis(verticalAxis);
-
         // Calculate the movement direction
-        Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput);
-        movement.Normalize(); // Normalize the vector to prevent faster diagonal movement
+        
+        Vector3 movement = new Vector3(movementInput.ReadValue<Vector2>().x, 0f, movementInput.ReadValue<Vector2>().y).normalized;
 
         // Move the player using Rigidbody.MovePosition
         Vector3 newPosition = transform.position + movement * moveSpeed * Time.deltaTime;
