@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -357,7 +357,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 33.65054
+  field of view: 115
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -383,8 +383,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.42792752, y: -0.12167605, z: 0.058262527, w: 0.89368814}
-  m_LocalPosition: {x: 3.1604538, y: 11.390612, z: -19.284002}
+  m_LocalRotation: {x: 0.44112626, y: -0.015522388, z: 0.0076312255, w: 0.89727837}
+  m_LocalPosition: {x: 1.5814564, y: 11.3558445, z: -19.22791}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -807,6 +807,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 212021773027477486, guid: 6416f99979c02a740b8813b3eeac45a8,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212021773027477486, guid: 6416f99979c02a740b8813b3eeac45a8,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.12460327
+      objectReference: {fileID: 0}
+    - target: {fileID: 212021773027477486, guid: 6416f99979c02a740b8813b3eeac45a8,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 590639739676489020, guid: 6416f99979c02a740b8813b3eeac45a8,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -816,6 +831,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052086761143624300, guid: 6416f99979c02a740b8813b3eeac45a8,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052086761143624300, guid: 6416f99979c02a740b8813b3eeac45a8,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052086761143624300, guid: 6416f99979c02a740b8813b3eeac45a8,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2064829425776411983, guid: 6416f99979c02a740b8813b3eeac45a8,
         type: 3}
@@ -836,6 +866,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3273115666308407371, guid: 6416f99979c02a740b8813b3eeac45a8,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3273115666308407371, guid: 6416f99979c02a740b8813b3eeac45a8,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3273115666308407371, guid: 6416f99979c02a740b8813b3eeac45a8,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.21888566
       objectReference: {fileID: 0}
     - target: {fileID: 5408448911568847501, guid: 6416f99979c02a740b8813b3eeac45a8,
         type: 3}
@@ -962,6 +1007,21 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7318344288888191249, guid: 6416f99979c02a740b8813b3eeac45a8,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7318344288888191249, guid: 6416f99979c02a740b8813b3eeac45a8,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7318344288888191249, guid: 6416f99979c02a740b8813b3eeac45a8,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8144254479246429454, guid: 6416f99979c02a740b8813b3eeac45a8,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -971,6 +1031,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827138179223667102, guid: 6416f99979c02a740b8813b3eeac45a8,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827138179223667102, guid: 6416f99979c02a740b8813b3eeac45a8,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.8353392
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827138179223667102, guid: 6416f99979c02a740b8813b3eeac45a8,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1020,8 +1095,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704157140}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.42792752, y: -0.12167605, z: 0.058262527, w: 0.89368814}
-  m_LocalPosition: {x: 8.674078, y: 37.01674, z: -39.15693}
+  m_LocalRotation: {x: 0.44112626, y: -0.015522388, z: 0.0076312255, w: 0.89727837}
+  m_LocalPosition: {x: 1.9794188, y: 26.274652, z: -30.726677}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2599,8 +2674,8 @@ MonoBehaviour:
   m_MaxDollyOut: 5000
   m_MinimumDistance: 10
   m_MaximumDistance: 5000
-  m_MinimumFOV: 30
-  m_MaximumFOV: 60
+  m_MinimumFOV: 115
+  m_MaximumFOV: 115
   m_MinimumOrthoSize: 1
   m_MaximumOrthoSize: 5000
 --- !u!114 &2009163246
