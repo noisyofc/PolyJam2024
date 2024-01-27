@@ -169,6 +169,7 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  animationHelper: {fileID: 0}
 --- !u!114 &8466277473275110274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +189,15 @@ MonoBehaviour:
     m_Bits: 0
   raycastDistance: 0.1
   animator: {fileID: 0}
+  jumpInput:
+    m_Name: Jump Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 6bb73266-0268-401b-9c1a-4e9141145a41
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!65 &7434961095772814494
 BoxCollider:
   m_ObjectHideFlags: 0
