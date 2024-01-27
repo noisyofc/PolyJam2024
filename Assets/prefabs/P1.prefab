@@ -917,7 +917,7 @@ Transform:
   m_GameObject: {fileID: 6652881352553857391}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.91, z: 0.937}
+  m_LocalPosition: {x: 0.69, y: 3.55, z: 0.9370003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3925,6 +3925,11 @@ MonoBehaviour:
   BananaGFX: {fileID: 8942179703542793631}
   GunGFX: {fileID: 6305300534257271162}
   HammerGFX: {fileID: 3843353395888106027}
+  PieGUI: {fileID: 0}
+  BananaGUI: {fileID: 0}
+  GunGUI: {fileID: 0}
+  HammerGUI: {fileID: 0}
+  chargeSlider: {fileID: 0}
   throwPoint: {fileID: 920136936761851914}
   throwStrengthMin: 5
   throwStrengthMax: 50

@@ -47,7 +47,7 @@ public class Throwing : MonoBehaviour
     {
         // Raycast to check if there's a throwable object in front of the player
         RaycastHit hit;
-        if (Physics.Raycast(raycastStartObj.position, -transform.up, out hit, 3f, throwableLayer))
+        if (Physics.Raycast(raycastStartObj.position, -transform.up*2-transform.right, out hit, 5.5f, throwableLayer))
         {
             heldObject = hit.collider.gameObject;
             heldObjectRb = heldObject.GetComponent<Rigidbody>();
@@ -90,5 +90,10 @@ public class Throwing : MonoBehaviour
             heldObject = null;
             heldObjectRb = null;            
         }
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(raycastStartObj.position, raycastStartObj.position - raycastStartObj.up * 4f - raycastStartObj.right * 2f);
     }
 }

@@ -42,7 +42,7 @@ public class ciastoScr : MonoBehaviour
     private void Start()
     {
         throwStrength = 0;
-        chargeSlider.value = 1;
+        chargeSlider.value = 0;
     }
 
     private void OnEnable()
@@ -85,7 +85,10 @@ public class ciastoScr : MonoBehaviour
             if (throwInput.ReadValue<float>()>0)
             {
                 throwStrength += throwStrengthDelta * Time.deltaTime;
-                chargeSlider.value = throwStrength/throwStrengthMax;
+                if (holdsBanana || holdsCiasto)
+                {
+                    chargeSlider.value = throwStrength / throwStrengthMax;
+                }
                 if (throwStrength > throwStrengthMax) { throwStrength = throwStrengthMax; }                
             }
             else if (throwInput.WasReleasedThisFrame())
@@ -195,9 +198,5 @@ public class ciastoScr : MonoBehaviour
         rb.AddForce(dir * slipStrength, ForceMode.Impulse);
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(hammerHitPt.position, hammerHitPt.position - hammerHitPt.up * 4f-hammerHitPt.right*2f);
-    }
+   
 }
