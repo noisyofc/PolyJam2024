@@ -31,7 +31,6 @@ public class Movement : MonoBehaviour
     void FixedUpdate()
     {
         HandleInput();
-        UpdateAnimations();
     }
 
     void HandleInput()
@@ -44,6 +43,7 @@ public class Movement : MonoBehaviour
         Vector3 oldPosition = Vector3.zero+transform.position;
         Vector3 newPosition = transform.position + movement * moveSpeed * Time.deltaTime;
         rb.MovePosition(newPosition);
+        UpdateAnimations(movement);
 
         // Rotate the player based on input
         if (movement != Vector3.zero)
@@ -52,11 +52,11 @@ public class Movement : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
         }
     }
-    void UpdateAnimations(){
+    void UpdateAnimations(Vector3 movement){
         float velocity=(lastKnownPosition-transform.position).magnitude;
         //Debug.Log(velocity);
         //Debug.Log($"{lastKnownPosition} {transform.position}");
-        if(velocity>0.01){
+        if(velocity>0.01 && movement!=Vector3.zero){
             animator.SetFloat("MoveSpeed",1f);
         }
         else animator.SetFloat("MoveSpeed",0f);
