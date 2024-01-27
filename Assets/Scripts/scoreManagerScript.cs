@@ -11,6 +11,8 @@ public class scoreManagerScript : MonoBehaviour
     public GameObject[] comboCounter;
     int comboIterator;
 
+    
+
     private void Update()
     {
         timer -= Time.deltaTime;
@@ -83,5 +85,10 @@ public class scoreManagerScript : MonoBehaviour
             }
         }
         multiplier = 1;
+    }
+
+    public void RemoveStar()
+    {
+
     }
 }

@@ -9,17 +9,18 @@ public class menuManagerScr : MonoBehaviour
 {
     public GameObject credits;
     public GameObject main;
-
+ 
+    
+    
     private void Start()
     {
         PressBack();
+        
     }
-
     public void PressQuit()
     {
         Application.Quit();
     }
-
     public void PressPlay()
     {
         SceneManager.LoadScene("Level1", LoadSceneMode.Single);

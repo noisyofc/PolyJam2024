@@ -16,6 +16,7 @@ public class targetScr : MonoBehaviour
     public bool isLost;
 
     public float val;
+    bool substractedStars = false;
 
     public pauseManagerScr pMS;
     void Start()
@@ -32,7 +33,7 @@ public class targetScr : MonoBehaviour
         {
             val -= fallingSpeed * Time.deltaTime;
             valSlider.value = Mathf.Lerp(0, 1, val);
-            if (val < 0) { /*Debug.Log(transform.name + " is at 0");*/ }
+            if (val < 0&&!substractedStars) { FindObjectOfType<pauseManagerScr>().stars -= 1; substractedStars = true; }
             if (val > 1) { val = 1; }
 
             sliderImage.color = Color.Lerp(Color.red, Color.green, valSlider.value);

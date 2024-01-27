@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering;
+using TMPro;
 
 public class pauseManagerScr : MonoBehaviour
 {
@@ -14,6 +15,24 @@ public class pauseManagerScr : MonoBehaviour
 
     public GameObject pauseMenu;
     public GameObject mainUI;
+    public GameObject winScreen;
+    public GameObject deathScreen;
+
+    public float stars = 3;
+    public TextMeshProUGUI starText;
+    bool win = false;
+
+    public void Loose()
+    {
+        isPaused = true;
+        deathScreen.SetActive(true);
+    }
+
+    public void Win()
+    {
+        isPaused = true;
+        winScreen.SetActive(true);
+    }
 
     private void OnEnable()
     {
@@ -27,6 +46,8 @@ public class pauseManagerScr : MonoBehaviour
     void Start()
     {
         UnpauseGame();
+        winScreen.SetActive(false);
+        deathScreen.SetActive(false);
     }
 
     public void UnpauseGame()
@@ -51,16 +72,21 @@ public class pauseManagerScr : MonoBehaviour
     }
     private void Update()
     {
-        if (pause.WasReleasedThisFrame())
+        if (!win)
         {
-            if (isPaused)
+            if (stars < 0) { Loose(); }
+            starText.text = stars.ToString();
+            if (pause.WasReleasedThisFrame())
             {
-                UnpauseGame();
+                if (isPaused)
+                {
+                    UnpauseGame();
+                }
+                else
+                {
+                    PauseGame();
+                }
             }
-            else
-            {
-                PauseGame();
-            }            
         }
     }
 }
