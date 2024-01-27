@@ -15,8 +15,11 @@ public class Throwing : MonoBehaviour
     private GameObject heldObject;
     private Rigidbody heldObjectRb;
     public AnimationHelper animationHelper;
+
+    public pauseManagerScr pMS;
     void Start(){
-        animationHelper=GetComponent<AnimationHelper>();
+        pMS = FindObjectOfType<pauseManagerScr>();
+        animationHelper =GetComponent<AnimationHelper>();
     }
 
     void Update()
@@ -34,16 +37,19 @@ public class Throwing : MonoBehaviour
 
     void HandleInput()
     {
-        if (throwInput.ReadValue<float>()>0)
+        if (!pMS.isPaused)
         {
-            if (heldObject == null)
+            if (throwInput.ReadValue<float>() > 0)
             {
-                PickUpObject();
-            }            
-        }
-        else
-        {
-            ThrowObjectInvoke();
+                if (heldObject == null)
+                {
+                    PickUpObject();
+                }
+            }
+            else
+            {
+                ThrowObjectInvoke();
+            }
         }
     }
 

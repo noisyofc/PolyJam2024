@@ -39,9 +39,10 @@ public class ciastoScr : MonoBehaviour
     bool holdsHammer = false;
     float throwStrength;
     float hammerHits;
-
+    public pauseManagerScr pMS;
     private void Start()
     {
+        pMS = FindObjectOfType<pauseManagerScr>();
         throwStrength = 0;
         chargeSlider.value = 0;
     }
@@ -81,7 +82,7 @@ public class ciastoScr : MonoBehaviour
         BananaGUI.SetActive(holdsBanana);
         GunGUI.SetActive(holdsGun);
         HammerGUI.SetActive(holdsHammer);
-        if(canThrow)
+        if(canThrow&& !pMS.isPaused)
         {
             if (throwInput.ReadValue<float>()>0)
             {

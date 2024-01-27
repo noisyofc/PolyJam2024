@@ -12,9 +12,10 @@ public class Movement : MonoBehaviour
     private Rigidbody rb;
     private Vector3 lastKnownPosition;
     private Animator animator;
-
+    public pauseManagerScr pMS;
     void Start()
     {
+        pMS = FindObjectOfType<pauseManagerScr>();
         rb = GetComponent<Rigidbody>();
         animator=GetComponent<Animator>();
         lastKnownPosition=transform.position;
@@ -30,7 +31,10 @@ public class Movement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        HandleInput();
+        if (!pMS.isPaused)
+        {
+            HandleInput();
+        }
     }
 
     void HandleInput()
