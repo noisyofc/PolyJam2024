@@ -15,12 +15,14 @@ public class Jump : MonoBehaviour
     public InputAction jumpInput;
     private float lastJump=Mathf.NegativeInfinity;
     public float JumpCooldownInSeconds=1f;
+    private Movement movement;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         boxCollider=GetComponent<BoxCollider>();
         animator=GetComponent<Animator>();
+        movement=GetComponent<Movement>();
     }
     void Update()
     {
@@ -29,7 +31,7 @@ public class Jump : MonoBehaviour
     }
     void HandleInput()
     {
-        if (jumpInput.WasPerformedThisFrame() && isGrounded && Time.time+JumpCooldownInSeconds>=lastJump)
+        if (jumpInput.WasPerformedThisFrame() && isGrounded && Time.time+JumpCooldownInSeconds>=lastJump && movement.canMove)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             animator.SetBool("JumpStart",true);

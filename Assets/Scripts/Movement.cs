@@ -13,7 +13,8 @@ public class Movement : MonoBehaviour
     private Vector3 lastKnownPosition;
     private Animator animator;
     public pauseManagerScr pMS;
-    private bool canMove=true;
+    [HideInInspector]
+    public bool canMove=true;
     private AnimationHelper animationHelper;
     void Start()
     {

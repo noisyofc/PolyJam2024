@@ -45,6 +45,7 @@ public class ciastoScr : MonoBehaviour
     private AnimationHelper animationHelper;
     private bool throwInvoked=false;
     private bool hammerInvoked=false;
+    private Movement movement1;
 
     private void Start()
     {
@@ -53,6 +54,7 @@ public class ciastoScr : MonoBehaviour
         chargeSlider.value = 0;
         animationHelper=GetComponent<AnimationHelper>();
         AimGFX.SetActive(false);
+        movement1=GetComponent<Movement>();
     }
 
     private void OnEnable()
@@ -117,7 +119,7 @@ public class ciastoScr : MonoBehaviour
         }
     }
     void InvokeUsePower(){
-        
+        if (!movement1.canMove) return;
         throwInvoked=true;
         if(holdsBanana||holdsCiasto){
             animationHelper.animator.SetBool("ThrowBanana",true);
