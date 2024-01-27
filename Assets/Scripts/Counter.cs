@@ -11,9 +11,10 @@ public class Counter : MonoBehaviour
     private bool isCountdownRunning = false;
 
     public TextMeshProUGUI countdownText; // Attach a UI Text component to this variable in the Unity Editor
-
+    public pauseManagerScr pMS;
     void Start()
     {
+        pMS = FindObjectOfType<pauseManagerScr>();
         currentTime = countdownDuration;
         UpdateCountdownText();
         StartCountdown();
@@ -21,19 +22,22 @@ public class Counter : MonoBehaviour
 
     void Update()
     {
-        if (isCountdownRunning)
+        if (!pMS.isPaused)
         {
-            if (currentTime > 0)
+            if (isCountdownRunning)
             {
-                currentTime -= Time.deltaTime;
-                UpdateCountdownText();
-            }
-            else
-            {
-                currentTime = 0;
-                isCountdownRunning = false;
-                Debug.Log("Time's up! Countdown complete.");
-                // Add any additional actions you want to perform when the countdown reaches zero.
+                if (currentTime > 0)
+                {
+                    currentTime -= Time.deltaTime;
+                    UpdateCountdownText();
+                }
+                else
+                {
+                    currentTime = 0;
+                    isCountdownRunning = false;
+                    Debug.Log("Time's up! Countdown complete.");
+                    // Add any additional actions you want to perform when the countdown reaches zero.
+                }
             }
         }
     }

@@ -16,8 +16,11 @@ public class targetScr : MonoBehaviour
     public bool isLost;
 
     public float val;
+
+    public pauseManagerScr pMS;
     void Start()
     {
+        pMS = FindObjectOfType<pauseManagerScr>();
         valSlider.value = 1; // Start with the slider at its maximum value
         val = 1;
     }
@@ -25,11 +28,14 @@ public class targetScr : MonoBehaviour
 
     void Update()
     {
-        val -= fallingSpeed * Time.deltaTime;
-        valSlider.value = Mathf.Lerp(0, 1, val);
-        if (val < 0) { /*Debug.Log(transform.name + " is at 0");*/ }
-        if(val>1) { val = 1; }
+        if (!pMS.isPaused)
+        {
+            val -= fallingSpeed * Time.deltaTime;
+            valSlider.value = Mathf.Lerp(0, 1, val);
+            if (val < 0) { /*Debug.Log(transform.name + " is at 0");*/ }
+            if (val > 1) { val = 1; }
 
-        sliderImage.color = Color.Lerp(Color.red, Color.green, valSlider.value);
+            sliderImage.color = Color.Lerp(Color.red, Color.green, valSlider.value);
+        }
     }
 }
