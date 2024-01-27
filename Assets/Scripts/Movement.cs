@@ -10,10 +10,14 @@ public class Movement : MonoBehaviour
     public InputAction movementInput;
 
     private Rigidbody rb;
+    private Vector3 lastKnownPosition;
+    private Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        animator=GetComponent<Animator>();
+        lastKnownPosition=transform.position;
     }
 
     private void OnEnable()
@@ -24,9 +28,10 @@ public class Movement : MonoBehaviour
     {
         movementInput.Disable();
     }
-    void Update()
+    void FixedUpdate()
     {
         HandleInput();
+        UpdateAnimations();
     }
 
     void HandleInput()
@@ -36,6 +41,7 @@ public class Movement : MonoBehaviour
         Vector3 movement = new Vector3(movementInput.ReadValue<Vector2>().x, 0f, movementInput.ReadValue<Vector2>().y).normalized;
 
         // Move the player using Rigidbody.MovePosition
+        Vector3 oldPosition = Vector3.zero+transform.position;
         Vector3 newPosition = transform.position + movement * moveSpeed * Time.deltaTime;
         rb.MovePosition(newPosition);
 
@@ -45,5 +51,15 @@ public class Movement : MonoBehaviour
             Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
         }
+    }
+    void UpdateAnimations(){
+        float velocity=(lastKnownPosition-transform.position).magnitude;
+        //Debug.Log(velocity);
+        //Debug.Log($"{lastKnownPosition} {transform.position}");
+        if(velocity>0.01){
+            animator.SetFloat("MoveSpeed",1f);
+        }
+        else animator.SetFloat("MoveSpeed",0f);
+        lastKnownPosition=transform.position;
     }
 }
