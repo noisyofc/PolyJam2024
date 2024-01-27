@@ -1764,6 +1764,11 @@ PrefabInstance:
       propertyPath: throwInput.m_SingletonActionBindings.Array.data[1].m_Action
       value: Throw Input
       objectReference: {fileID: 0}
+    - target: {fileID: 859472410689729142, guid: 29bc6f40fd2aceb4fbbf1880dee9d255,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7c3be65701a11ee4ba6f59bebe106364, type: 2}
     - target: {fileID: 3876572939944990816, guid: 29bc6f40fd2aceb4fbbf1880dee9d255,
         type: 3}
       propertyPath: m_Name
@@ -2692,6 +2697,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1453851281}
     m_Modifications:
+    - target: {fileID: 859472410689729142, guid: 29bc6f40fd2aceb4fbbf1880dee9d255,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 56a85b93fba7f0545bd257d7db9a8658, type: 2}
     - target: {fileID: 3286503164893342717, guid: 29bc6f40fd2aceb4fbbf1880dee9d255,
         type: 3}
       propertyPath: m_LocalPosition.y
