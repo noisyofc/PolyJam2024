@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3698,6 +3698,16 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: -1681934334349627401, guid: 29bc6f40fd2aceb4fbbf1880dee9d255,
+        type: 3}
+      propertyPath: jumpInput.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/shift
+      objectReference: {fileID: 0}
+    - target: {fileID: -1681934334349627401, guid: 29bc6f40fd2aceb4fbbf1880dee9d255,
+        type: 3}
+      propertyPath: jumpInput.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <Gamepad>/buttonEast
+      objectReference: {fileID: 0}
     - target: {fileID: 47168505854791224, guid: 29bc6f40fd2aceb4fbbf1880dee9d255,
         type: 3}
       propertyPath: throwForce
@@ -3862,6 +3872,16 @@ PrefabInstance:
         type: 3}
       propertyPath: throwStrength
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7123089663974088287, guid: 29bc6f40fd2aceb4fbbf1880dee9d255,
+        type: 3}
+      propertyPath: throwInput.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Gamepad>/buttonWest
+      objectReference: {fileID: 0}
+    - target: {fileID: 7123089663974088287, guid: 29bc6f40fd2aceb4fbbf1880dee9d255,
+        type: 3}
+      propertyPath: throwInput.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <Keyboard>/ctrl
       objectReference: {fileID: 0}
     - target: {fileID: 7760703179527190609, guid: 29bc6f40fd2aceb4fbbf1880dee9d255,
         type: 3}
@@ -5796,6 +5816,16 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: -1681934334349627401, guid: 29bc6f40fd2aceb4fbbf1880dee9d255,
+        type: 3}
+      propertyPath: jumpInput.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1681934334349627401, guid: 29bc6f40fd2aceb4fbbf1880dee9d255,
+        type: 3}
+      propertyPath: jumpInput.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/e
+      objectReference: {fileID: 0}
     - target: {fileID: 47168505854791224, guid: 29bc6f40fd2aceb4fbbf1880dee9d255,
         type: 3}
       propertyPath: throwForce
@@ -5939,7 +5969,7 @@ PrefabInstance:
     - target: {fileID: 7123089663974088287, guid: 29bc6f40fd2aceb4fbbf1880dee9d255,
         type: 3}
       propertyPath: throwInput.m_SingletonActionBindings.Array.data[0].m_Path
-      value: <Keyboard>/e
+      value: <Keyboard>/q
       objectReference: {fileID: 0}
     - target: {fileID: 7123089663974088287, guid: 29bc6f40fd2aceb4fbbf1880dee9d255,
         type: 3}
