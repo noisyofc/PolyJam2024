@@ -8788,6 +8788,7 @@ MonoBehaviour:
       m_Action: Throw Input
       m_Flags: 0
     m_Flags: 0
+  heldObject: {fileID: 0}
   animationHelper: {fileID: 0}
   pMS: {fileID: 0}
 --- !u!114 &7123089663974088287
@@ -8849,7 +8850,12 @@ MonoBehaviour:
   throwStrengthDelta: 20
   slipStrength: 10
   hitStrength: 20
+  canThrow: 0
   pMS: {fileID: 0}
+  throwSound: {fileID: 0}
+  bananaSound: {fileID: 0}
+  splatSound: {fileID: 0}
+  timeToResetInvoke: 1
 --- !u!114 &-1681934334349627401
 MonoBehaviour:
   m_ObjectHideFlags: 0

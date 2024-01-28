@@ -58,4 +58,9 @@ public class AnimationHelper : MonoBehaviour
         animator.SetLayerWeight(sweepMask,0f);   
         animator.SetBool("SweepFall",false);
     }
+    public void ResetBools(){
+        animator.SetBool("ThrowBanana",false);
+        animator.SetBool("SwingHammer",false);
+        animator.SetBool("ThrowObject",false);
+    }
 }

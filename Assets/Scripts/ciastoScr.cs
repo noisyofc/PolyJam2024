@@ -52,7 +52,7 @@ public class ciastoScr : MonoBehaviour
     public AudioSource splatSound;
 
     private float lastTimeInvoked = Mathf.NegativeInfinity;
-    public float timeToResetInvoke = 3f;
+    public float timeToResetInvoke = 2f;
 
     private void Start()
     {
@@ -75,7 +75,7 @@ public class ciastoScr : MonoBehaviour
 
     public void EnterSpawner(int objectIndex)
     {
-        if (!canThrow&&transform.GetComponent<Throwing>().heldObject==null)
+        if (!canThrow&&transform.GetComponent<Throwing>().heldObject==null && !throwInvoked)
         {
             canThrow = true;
             switch (objectIndex)
@@ -226,13 +226,14 @@ public class ciastoScr : MonoBehaviour
         }
     }
     public void FinishHammerSwing(){
+        Debug.LogError("Hammer Done");
         hammerInvoked=false;
         animationHelper.FinishHammerSwingAnim();
         if (hammerHits == 0)
             {
                 canThrow = false;
                 holdsHammer = false;
-                animationHelper.OneHandDrop();
+                ClearOneHand();
             }
      }
     public void HitByCiasto()
@@ -268,12 +269,24 @@ public class ciastoScr : MonoBehaviour
 
     void CheckInvokeTimer()
     {
-        if (Time.time > lastTimeInvoked+timeToResetInvoke)
+        if (Time.time > lastTimeInvoked+timeToResetInvoke && !holdsHammer)
         {
             throwInvoked = false;
             Debug.LogError(transform.name+" Resetting");
+            animationHelper.ResetBools();
+        }
+        if(holdsHammer && (Time.time > lastTimeInvoked+1.5f))
+        {
+            throwInvoked=false;
+            hammerInvoked=false;
+            animationHelper.ResetBools();
         }
 
+    }
+    public void ClearOneHand(){
+        if(!canThrow){
+            animationHelper.OneHandDrop();
+        }
     }
 
    
