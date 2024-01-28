@@ -51,6 +51,9 @@ public class ciastoScr : MonoBehaviour
     public AudioSource bananaSound;
     public AudioSource splatSound;
 
+    private float lastTimeInvoked = Mathf.NegativeInfinity;
+    public float timeToResetInvoke = 3f;
+
     private void Start()
     {
         pMS = FindObjectOfType<pauseManagerScr>();
@@ -96,8 +99,12 @@ public class ciastoScr : MonoBehaviour
         BananaGUI.SetActive(holdsBanana);
         GunGUI.SetActive(holdsGun);
         HammerGUI.SetActive(holdsHammer);
+
+        CheckInvokeTimer();
+        Debug.LogError($"{transform.name} {canThrow} {!throwInvoked} {!hammerInvoked}");
         if(canThrow && !throwInvoked && !hammerInvoked && !pMS.isPaused)
         {
+            Debug.LogError(transform.name + " can use");    
             if (throwInput.ReadValue<float>()>0)
             {
                 throwStrength += throwStrengthDelta * Time.deltaTime;
@@ -110,6 +117,7 @@ public class ciastoScr : MonoBehaviour
             }
             else if (throwInput.WasReleasedThisFrame())
             {
+                Debug.LogError(transform.name + " released");
                 AimGFX.SetActive(false);
                 chargeSlider.value = 0;
                 InvokeUsePower();
@@ -125,6 +133,7 @@ public class ciastoScr : MonoBehaviour
     void InvokeUsePower(){
         if (!movement1.canMove) return;
         throwInvoked=true;
+        lastTimeInvoked = Time.time;
         if(holdsBanana||holdsCiasto){
             animationHelper.animator.SetBool("ThrowBanana",true);
         }
@@ -255,6 +264,16 @@ public class ciastoScr : MonoBehaviour
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.AddForce(dir * slipStrength, ForceMode.Impulse);
         scoreManager.PerformHammer();
+    }
+
+    void CheckInvokeTimer()
+    {
+        if (Time.time > lastTimeInvoked+timeToResetInvoke)
+        {
+            throwInvoked = false;
+            Debug.LogError(transform.name+" Resetting");
+        }
+
     }
 
    
