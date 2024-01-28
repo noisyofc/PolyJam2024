@@ -20,7 +20,7 @@ public class pauseManagerScr : MonoBehaviour
     public AudioSource clickSound;
 
     public float stars = 3;
-    public TextMeshProUGUI starText;
+    public GameObject[] starsUI;
     bool win = false;
 
     public void Loose()
@@ -47,6 +47,7 @@ public class pauseManagerScr : MonoBehaviour
     void Start()
     {
         UnpauseGame();
+        UpdateStarUI();
         winScreen.SetActive(false);
         deathScreen.SetActive(false);
         if (clickSound == null)
@@ -84,7 +85,6 @@ public class pauseManagerScr : MonoBehaviour
         if (!win)
         {
             if (stars < 0) { Loose(); }
-            starText.text = stars.ToString();
             if (pause.WasReleasedThisFrame())
             {
                 if (isPaused)
@@ -96,6 +96,16 @@ public class pauseManagerScr : MonoBehaviour
                     PauseGame();
                 }
             }
+        }
+        UpdateStarUI();
+    }
+
+    
+    void UpdateStarUI()
+    {
+        for (int i = 0; i < starsUI.Length; i++)
+        {
+            starsUI[i].SetActive(i<stars);
         }
     }
 }

@@ -37,6 +37,7 @@ public class Counter : MonoBehaviour
                     isCountdownRunning = false;
                     Debug.Log("Time's up! Countdown complete.");
                     FindObjectOfType<pauseManagerScr>().Win();
+                    UpdateCountdownText();
                     // Add any additional actions you want to perform when the countdown reaches zero.
                 }
             }

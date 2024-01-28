@@ -33,7 +33,7 @@ public class ciastoScr : MonoBehaviour
     public float slipStrength;
     public float hitStrength;
 
-    bool canThrow = false;
+    public bool canThrow = false;
     bool holdsCiasto = false;
     bool holdsBanana = false;
     bool holdsGun = false;
@@ -68,7 +68,7 @@ public class ciastoScr : MonoBehaviour
 
     public void EnterSpawner(int objectIndex)
     {
-        if (!canThrow)
+        if (!canThrow&&transform.GetComponent<Throwing>().heldObject==null)
         {
             canThrow = true;
             switch (objectIndex)

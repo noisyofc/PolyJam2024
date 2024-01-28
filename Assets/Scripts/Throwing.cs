@@ -12,7 +12,7 @@ public class Throwing : MonoBehaviour
     public Transform raycastStartObj;
     public InputAction throwInput;
 
-    private GameObject heldObject;
+    public GameObject heldObject;
     private Rigidbody heldObjectRb;
     public AnimationHelper animationHelper;
 
@@ -24,7 +24,10 @@ public class Throwing : MonoBehaviour
 
     void Update()
     {
-        HandleInput();
+        if (!transform.GetComponent<ciastoScr>().canThrow)
+        {
+            HandleInput();
+        }
     }
     private void OnEnable()
     {
