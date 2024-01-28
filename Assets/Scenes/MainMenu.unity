@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1685,7 +1685,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -180}
+  m_AnchoredPosition: {x: 0, y: -244}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1431824265
@@ -1950,8 +1950,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000014305, y: 11}
-  m_SizeDelta: {x: 247.169, y: 336.09}
+  m_AnchoredPosition: {x: 0, y: 107}
+  m_SizeDelta: {x: 971.3752, y: 336.09}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1825723818
 MonoBehaviour:
@@ -1973,11 +1973,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Mauris a diam maecenas sed
-    enim. Facilisi morbi tempus iaculis urna. Tellus rutrum tellus pellentesque eu
-    tincidunt tortor aliquam. Dui nunc mattis enim ut tellus elementum. Pellentesque
-    elit eget gravida cum. '
+  m_text: "Game Design, Sound Design - Bartek Wach\r\n3D Art, 2D Art - Klaudia Matulska\r\nProgramming,
+    Game Development - Jeremi\r\nProgramming, Lighting, Animations - Dominik Derewo\u0144ko\r\n\r\nAssets:\ncartoon-long-throw.wav
+    by copyc4t, freesound.org\r\nFree vector 3d metal star isolated by brgfx, freepik.org\r\nCircus
+    Music Album - 052818, by GWriterStudio, Unity Asset Store\r\nCrate 3D model by
+    DJMaesen, sketchfab.com\r\nWood 10, cgbookcase.com\r\nRed Flag by Space Explorers
+    Academy, sketchfab.com\r\nHerringbone Parquet Flooring 02, cgbookcase.com\r\nCarpet
+    012 Pbr Texture, 3dheven.com\r\nFree Walnut Mitridat Natural Stone Texture, lotpixel.com\r\nMallet
+    by Veritas Animation, sketchfab.com\r\nFlare Gun by Ameer Studio, sketchfab.com\r\nPie
+    by Jacob.Elhatmi, sketchfab.com\r\nEnvironment Asset - Pillar by Karthik Naidu,
+    sketchfab.com\r\nBanana Peel by House Doctor, sketchfab.com\r\npropeller cap
+    by noitamina_, sketchfab.com\r\nlollipop by AT design studio, sketchfab.com\r\nDark
+    Wooden Parquet Flooring 01, cgbookcase.com\r\nOld Iron 01, cgbookcase.com\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2004,8 +2011,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 17
+  m_fontSizeBase: 17
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

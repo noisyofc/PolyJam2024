@@ -61,6 +61,5 @@ public class AnimationHelper : MonoBehaviour
     public void ResetBools(){
         animator.SetBool("ThrowBanana",false);
         animator.SetBool("SwingHammer",false);
-        animator.SetBool("ThrowObject",false);
     }
 }

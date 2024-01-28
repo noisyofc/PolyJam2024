@@ -42,7 +42,7 @@ public class Throwing : MonoBehaviour
     {
         if (!pMS.isPaused)
         {
-            if (throwInput.ReadValue<float>() > 0)
+            if (throwInput.IsPressed() )
             {
                 if (heldObject == null)
                 {
