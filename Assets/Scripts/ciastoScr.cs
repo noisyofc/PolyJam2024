@@ -47,6 +47,10 @@ public class ciastoScr : MonoBehaviour
     private bool hammerInvoked=false;
     private Movement movement1;
 
+    public AudioSource throwSound;
+    public AudioSource bananaSound;
+    public AudioSource splatSound;
+
     private void Start()
     {
         pMS = FindObjectOfType<pauseManagerScr>();
@@ -155,6 +159,7 @@ public class ciastoScr : MonoBehaviour
             canThrow = false;
             holdsBanana = false;
             Destroy(GO, 10f);
+            throwSound.Play();
         }
         else if (holdsGun)
         {
@@ -174,6 +179,7 @@ public class ciastoScr : MonoBehaviour
                         rb.AddForce(gunFirePt.forward * hitStrength, ForceMode.Impulse);
                     }
                 }
+                throwSound.Play();
             }
             canThrow = false;
             holdsGun = false;
@@ -198,6 +204,7 @@ public class ciastoScr : MonoBehaviour
                     }
                 }
             }
+            throwSound.Play();
 
             hammerHits--;
 
@@ -223,6 +230,7 @@ public class ciastoScr : MonoBehaviour
     {
         Debug.Log(transform.name + " was hit by ciasto");
         scoreManager.PerformPie();
+        splatSound.Play();
     }
     public void HitByBanana()
     {
@@ -232,6 +240,7 @@ public class ciastoScr : MonoBehaviour
         scoreManager.PerformBanana();
         Movement movement=rb.GetComponent<Movement>();
         movement.DisableMovement();
+        bananaSound.Play();
     }
     public void HitByGun(Vector3 dir) 
     {
