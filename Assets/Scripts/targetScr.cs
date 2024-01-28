@@ -19,6 +19,8 @@ public class targetScr : MonoBehaviour
     bool substractedStars = false;
 
     public pauseManagerScr pMS;
+    public Animator animator;
+    public string animName;
     void Start()
     {
         pMS = FindObjectOfType<pauseManagerScr>();
@@ -33,10 +35,15 @@ public class targetScr : MonoBehaviour
         {
             val -= fallingSpeed * Time.deltaTime;
             valSlider.value = Mathf.Lerp(0, 1, val);
-            if (val < 0&&!substractedStars) { FindObjectOfType<pauseManagerScr>().stars -= 1; substractedStars = true; }
+            if (val < 0&&!substractedStars) { FindObjectOfType<pauseManagerScr>().stars -= 1; substractedStars = true; animator.Play(animName); }
             if (val > 1) { val = 1; }
 
             sliderImage.color = Color.Lerp(Color.red, Color.green, valSlider.value);
         }
+    }
+
+    public void DisableSelf()
+    {
+        gameObject.SetActive(false);
     }
 }
