@@ -26,13 +26,18 @@ public class pauseManagerScr : MonoBehaviour
     public void Loose()
     {
         isPaused = true;
+        mainUI.SetActive(false);
         deathScreen.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+
     }
 
     public void Win()
     {
         isPaused = true;
         winScreen.SetActive(true);
+        mainUI.SetActive(false);
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void OnEnable()
