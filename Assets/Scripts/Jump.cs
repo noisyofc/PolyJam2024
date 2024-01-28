@@ -57,11 +57,13 @@ public class Jump : MonoBehaviour
         RaycastHit hit;
         //isGrounded = Physics.Raycast(transform.position, Vector3.down, out hit, boxCollider.size.y/2+raycastDistance-boxCollider.center.y, ~groundLayerToIgnore);
         isGrounded = Physics.Raycast(transform.position+Vector3.up*0.1f, Vector3.down, out hit, raycastDistance*2, ~groundLayerToIgnore);
-
         // Ignore the collider attached to this GameObject
         if (hit.collider != null && hit.collider.gameObject == gameObject)
         {
             isGrounded = false;
+            if(rb.velocity.y<1f && rb.velocity.y>-1f){
+                isGrounded=true;
+            }
         }
         animator.SetBool("IsGrounded",isGrounded);
         
