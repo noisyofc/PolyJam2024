@@ -17,6 +17,7 @@ public class pauseManagerScr : MonoBehaviour
     public GameObject mainUI;
     public GameObject winScreen;
     public GameObject deathScreen;
+    public AudioSource clickSound;
 
     public float stars = 3;
     public TextMeshProUGUI starText;
@@ -48,6 +49,11 @@ public class pauseManagerScr : MonoBehaviour
         UnpauseGame();
         winScreen.SetActive(false);
         deathScreen.SetActive(false);
+        if (clickSound == null)
+        {
+            clickSound = GetComponent<AudioSource>();
+        }
+        clickSound.Stop();
     }
 
     public void UnpauseGame()
@@ -56,11 +62,13 @@ public class pauseManagerScr : MonoBehaviour
         pauseMenu.SetActive(false);
         mainUI.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
+        clickSound.Play();
     }
 
     public void QuitToMenu()
     {
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        clickSound.Play();
     }
 
     void PauseGame()
@@ -69,6 +77,7 @@ public class pauseManagerScr : MonoBehaviour
         pauseMenu.SetActive(true);
         mainUI.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
+        clickSound.Play();
     }
     private void Update()
     {
